@@ -4,9 +4,7 @@
 
 A script is a clear set of instructions we give to the computer so it can do (some of) our work for us. 
 
-
-For example, instead of manually looking at sales data and coming up with a guess at how much to ramp up production for Christmas,
-a script can load that data, apply a model, generate a prediction, and (with some work that's outside the scope of this class) automatically send an email to the factory manager every week with an updated prediction of the number of orders she should make for each of the upcoming four weeks.
+For example, instead of manually looking at sales data and coming up with an educated guess at how much to ramp up production for Christmas, you can automate the process allowing you to spend more time on other problems (e.g. ensuring that your predictions are getting more reliable over time).
 
 ## Intro
 
@@ -21,7 +19,7 @@ Programming languages are often split into "interpretted" and "compiled" languag
 
 With a compiled language, we have to write out the whole program, then another program converts the whole thing into machine code, *then* you can run the program. This way creates faster programs, but it can also be harder to write the source code because you don't get the instant feedback of an interpretted language.
 
-
+When we write R code, we will usually take full advantage of the console and iteratively build up a script.
 
 ### Example
 
@@ -48,3 +46,34 @@ any units in large sizes.
 
 ## Common Errors and how to prevent them
 
+### Not using 
+
+### Solving a problem in the console and forgetting to integrate it into the script.
+
+I start every `R` script with this line:
+
+```R
+rm(list=ls())
+```
+
+Every time I run my script, it clears away everything from the console. Why? 
+Because I want to make sure my script works even when I'm on vacation. 
+
+Because R coding is an iterative process where we spend a lot of time at the console, it's easy to solve problems in our [workspace](https://replit.com/@RickWeber/ECO365-Workspace#lesson.md) but forget to bring them into the script. 
+
+So you get this automated report system working, but next week your factory managers are getting emails full of garbled error messages. After several hours of debugging you'll eventually find out that your script needs to do some minor transformation to the data which you had done manually while creating the script, but didn't include in the script itself. 
+
+If you include the `rm(list=ls())` line at the top of your script, you won't convince yourself the script works until it actually does! 
+
+### Solving a problem in the console and forgetting how you did it.
+
+It doesn't help you to know your script doesn't work if you don't know how to fix it. And when you're at the edge of your own competence (a common experience when learning a new skill... and a common experience even when you've been coding a long time!) you'll often stumble on a solution, then stumble right past it again.
+
+First off, if you find yourself in that situation, you should stop and assess the situation. Second, you should look at your R history. If you're using R studio, it'll be easy to search through in its own pane. Otherwise, it will be in your working directory in a text file named `.Rhistory`. You might have to exit R before you can access it.
+
+```R
+> q()
+Save workspace image? [y/n/c]: y
+```
+
+Open up that file in your favorite text editor to look over your code. Compare it to what's in the relevant documentation, and you'll get it sorted out eventually! Then make sure to get it into your script!
